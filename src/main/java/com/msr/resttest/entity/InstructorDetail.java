@@ -9,6 +9,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "instructor_detail")
@@ -16,7 +17,9 @@ import javax.persistence.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class InstructorDetail {
+public class InstructorDetail implements Serializable {
+
+    private static final long serialVersionUID = 1l;
     @Id
     /*@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence-generator-instructor-det")
     @SequenceGenerator(
@@ -50,4 +53,8 @@ public class InstructorDetail {
         this.hobby = hobby;
     }
 
+    public InstructorDetail(String youtubeChannel, String hobby) {
+        this.youtubeChannel = youtubeChannel;
+        this.hobby = hobby;
+    }
 }
